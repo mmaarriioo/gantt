@@ -30,7 +30,7 @@ $handle-color: #ddd !default;
 	}
 	.tick {
 		stroke: $border-color;
-		stroke-width: 0.2;
+		stroke-width: 0.8;
 		&.thick {
 			stroke-width: 0.4;
 		}

@@ -535,28 +535,33 @@ export default class Gantt {
             Year_upper:
                 date.getFullYear() !== last_date.getFullYear()
                     ? date_utils.format(date, 'YYYY', this.options.language)
-                    : '',
+                    : ''
         };
 
         const base_pos = {
             x: i * this.options.column_width,
             lower_y: this.options.header_height,
-            upper_y: this.options.header_height - 25,
+            upper_y: this.options.header_height - 25
         };
 
         const x_pos = {
-            'Quarter Day_lower': (this.options.column_width * 4) / 2,
-            'Quarter Day_upper': 0,
-            'Half Day_lower': (this.options.column_width * 2) / 2,
-            'Half Day_upper': 0,
-            Day_lower: this.options.column_width / 2,
-            Day_upper: (this.options.column_width * 30) / 2,
-            Week_lower: 0,
-            Week_upper: (this.options.column_width * 4) / 2,
-            Month_lower: this.options.column_width / 2,
-            Month_upper: (this.options.column_width * 12) / 2,
-            Year_lower: this.options.column_width / 2,
-            Year_upper: (this.options.column_width * 30) / 2,
+            'Quarter Day_lower': 0,
+            'Quarter Day_upper': (this.options.column_width * 4) / 2,
+
+            'Half Day_lower': 0,
+            'Half Day_upper': (this.options.column_width * 2) / 2,
+
+            'Day_lower': 0,//this.options.column_width / 2,
+            'Day_upper': (this.options.column_width * 30) / 2,
+
+            'Week_lower': 0,
+            'Week_upper': (this.options.column_width * 4) / 2,
+
+            'Month_lower': this.options.column_width / 2,
+            'Month_upper': (this.options.column_width * 12) / 2,
+
+            'Year_lower': this.options.column_width / 2,
+            'Year_upper': (this.options.column_width * 30) / 2
         };
 
         return {
