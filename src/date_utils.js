@@ -7,6 +7,20 @@ const SECOND = 'second';
 const MILLISECOND = 'millisecond';
 
 const month_names = {
+  it: [
+      'Gennaio',
+      'Febbraio',
+      'Marzo',
+      'Aprile',
+      'Maggio',
+      'Giugno',
+      'Luglio',
+      'Agosto',
+      'Settembre',
+      'Ottobre',
+      'Novembre',
+      'Dicembre',
+  ],
     en: [
         'January',
         'February',

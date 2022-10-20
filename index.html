@@ -28,47 +28,69 @@
 	<script>
 	var tasks = [
 		{
-			start: '2022-01-10 00:00:00',
-			end: '2022-01-12 23:59:59',
+			start: '2022-01-09 22:30:00',
+			end: '2022-01-10 23:50:00',
 			name: 'Name 1',
 			id: "Task1",
-			progress: 20
+			progress: 20,
+			custom_class :'helix_green'
+
 		},{
-			start: '2022-02-28 00:00:00',
-			end: '2022-03-02 23:59:59',
-			name: 'Name 1',
-			id: "Task1",
-			progress: 20
-		},{
-			start: '2022-02-23 00:00:00',
-			end: '2022-03-02 00:01:00',
-			name: 'Name 2',
+			start: '2022-01-09 22:50:00',
+			end: '2022-01-10 23:40:00',
+			name: 'Name 59',
 			id: "Task2",
+			progress: 20,
+			dependencies:"Task1"
+		},{
+			start: '2022-01-09 23:10:00',
+			end: '2022-01-10 23:30:00',
+			name: 'Name 2',
+			id: "Task3",
 			progress: 20
 		},{
-			start: '2022-02-01 00:01:00',
-			end: '2022-03-01 00:01:00',
+			start: '2022-01-10 04:00:00',
+			end: '2022-01-10 21:00:00',
 			name: 'Name 3',
-			id: "Task3",
+			id: "Task4",
 			progress: 20
 		},
 		{
-			start: '2022-01-01 00:00:00',
-			end: '2022-12-31 23:59:00',
+			start: '2022-01-10 06:00:00',
+			end: '2022-01-10 20:00:00',
 			name: 'Name 4',
-			id: "Task4",
-			progress: 20
+			id: "Task5",
+			progress: 20,
+			custom_popup_html:null
 		}];
 
 		var gantt_chart = new Gantt(".gantt-target", tasks, {
-				view_mode: 'Quarter Day',
+view_mode: 'Ora Day',
+
+bar_height: 80,
+bar_corner_radius: 0,
+arrow_curve: 20,
+				//view_mode: 'Quarter Day',
 				//view_mode: 'Half Day',
 				//view_mode: 'Day',
 				//view_mode: 'Week',
 				//view_mode: 'Month',
 				//view_mode: 'Year',
-
+					custom_popup_html:function(task){return'<div style="height: 100px;  width: 100px; background-color: powderblue;"> aa</div>';},
+				custom_popup_html_: function(task) {
+					  // the task object will contain the updated
+					  // dates and progress value
+					  const end_date = task._end.toDateString();
+					  return `
+						<div class="details-container">
+						  <h5>${task.name}</h5>
+						  <p>Expected to finish by ${end_date}</p>
+						  <p>${task.progress}% completed!</p>
+						</div>
+					  `;
+					},
 			on_click: function (task) {
+				alert();
 				console.log(task);
 			},
 			on_date_change: function(task, start, end) {
@@ -81,7 +103,7 @@
 				console.log(mode);
 			},
 			//view_mode: 'Month',
-			language: 'en'
+			language: 'it'
 		});
 		console.log(gantt_chart);
 	</script>

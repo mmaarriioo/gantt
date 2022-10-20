@@ -27,7 +27,10 @@ export default class Bar {
         this.y = this.compute_y();
         this.corner_radius = this.gantt.options.bar_corner_radius;
         this.duration =
-            date_utils.diff(this.task._end, this.task._start, 'hour') /
+            //old
+            //date_utils.diff(this.task._end, this.task._start, 'hour') /
+            //new 14 ottobre 2022 .. minute / 60 come sotto
+            date_utils.diff(this.task._end, this.task._start, 'minute')/60 /
             this.gantt.options.step;
         this.width = this.gantt.options.column_width * this.duration;
         this.progress_width =
@@ -84,7 +87,6 @@ export default class Bar {
             class: 'bar',
             append_to: this.bar_group,
         });
-
         animateSVG(this.$bar, 'width', 0, this.width);
 
         if (this.invalid) {
@@ -308,8 +310,11 @@ export default class Bar {
         const task_start = this.task._start;
         const gantt_start = this.gantt.gantt_start;
 
-        const diff = date_utils.diff(task_start, gantt_start, 'hour');
-        let x = (diff / step) * column_width;
+        // OLD 14 ott 2022
+        //const diff = date_utils.diff(task_start, gantt_start, 'hour');
+        // NEW 14 ott 2022 MMAARRIIOO calcolo in minuti poi divido per 60 altrimenti nella visualizzazione a ora la barra inizia sempre all'inizio dell'ora
+        const diff = date_utils.diff(task_start, gantt_start, 'minute');
+        let x = ((diff/60) / step) * column_width;
 
         if (this.gantt.view_is('Month')) {
             const diff = date_utils.diff(task_start, gantt_start, 'day');

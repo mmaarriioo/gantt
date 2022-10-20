@@ -10,6 +10,21 @@ $text-color: #333 !default;
 $blue: #a3a3ff !default;
 $handle-color: #ddd !default;
 
+.helix_green {
+.bar {
+  fill: green !important;
+}
+.bar-progress {
+  fill: blue !important;
+}
+.bar-label {
+	font-size: 30px !important;
+}
+
+}
+
+
+
 .gantt {
 	.grid-background {
 		fill: none;

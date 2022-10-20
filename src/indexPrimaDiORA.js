@@ -7,7 +7,6 @@ import Popup from './popup';
 import './gantt.scss';
 
 const VIEW_MODE = {
-    ORA_DAY: 'Ora Day',
     QUARTER_DAY: 'Quarter Day',
     HALF_DAY: 'Half Day',
     DAY: 'Day',
@@ -192,10 +191,7 @@ export default class Gantt {
         } else if (view_mode === VIEW_MODE.QUARTER_DAY) {
             this.options.step = 24 / 4;
             this.options.column_width = 38;
-        } else if (view_mode === VIEW_MODE.ORA_DAY) {
-            this.options.step = 24 / 24;
-            this.options.column_width = 38;
-        }else if (view_mode === VIEW_MODE.WEEK) {
+        } else if (view_mode === VIEW_MODE.WEEK) {
             this.options.step = 24 * 7;
             this.options.column_width = 140;
         } else if (view_mode === VIEW_MODE.MONTH) {
@@ -490,12 +486,6 @@ export default class Gantt {
             last_date = date_utils.add(date, 1, 'year');
         }
         const date_text = {
-
-          'Ora Day_lower': date_utils.format(
-              date,
-              'HH',
-              this.options.language
-          ),
             'Quarter Day_lower': date_utils.format(
                 date,
                 'HH',
@@ -516,10 +506,6 @@ export default class Gantt {
                     : date_utils.format(date, 'D', this.options.language),
             Month_lower: date_utils.format(date, 'MMMM', this.options.language),
             Year_lower: date_utils.format(date, 'YYYY', this.options.language),
-            'Ora Day_upper':
-                date.getDate() !== last_date.getDate()
-                    ? date_utils.format(date, 'D MMM', this.options.language)
-                    : '',
             'Quarter Day_upper':
                 date.getDate() !== last_date.getDate()
                     ? date_utils.format(date, 'D MMM', this.options.language)
@@ -559,9 +545,6 @@ export default class Gantt {
         };
 
         const x_pos = {
-            'Ora Day_lower': 0,
-            'Ora Day_upper': (this.options.column_width * 24) / 2,
-
             'Quarter Day_lower': 0,
             'Quarter Day_upper': (this.options.column_width * 4) / 2,
 
